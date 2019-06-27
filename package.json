@@ -1,0 +1,13 @@
+{
+  "name": "auto-code-gen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start: "electron ."
+  },
+  "author": "",
+  "devDependencies": {
+    "electron": "^5.0.6"
+  }
+}
