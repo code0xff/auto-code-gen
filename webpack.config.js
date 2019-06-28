@@ -16,6 +16,10 @@ module.exports = {
           loader: "html-loader",
           options: { minimize: true }
         }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -24,5 +28,5 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     })
-  ]
+  ],
 }
