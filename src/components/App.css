@@ -1,3 +1,45 @@
 .app {
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.h-title {
+  color: #6e6e6e;
+}
+
+.input-target {
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  height: 25px;
+  width: 250px;
+}
+
+.div-type {
+  margin: 15px;
+  color: #6e6e6e;
+}
+
+.radio-type:hover {
+  cursor: pointer;
+}
+
+.button-generate {
+  border: 1px solid #bdbdbd;
+  background: #fff;
+  height: 25px;
+  width: 100px;
+  border-radius: 5px;
+  color: #6e6e6e;
+}
+
+.button-generate:hover {
+  cursor: pointer;
+}
+
+.p-code {
+  font-size: 15px;
+  color: #6e6e6e;
 }
