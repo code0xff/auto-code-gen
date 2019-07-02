@@ -4,7 +4,7 @@ import './App.css'
 import properties from '../constants/properties.json'
 
 export default class App extends Component {
-  state = {type: 'underbar', target: null, code: '코드로 변환하실 내용을 입력해주세요.'}
+  state = {type: 'UNDERBAR', target: null, code: '코드로 변환하실 내용을 입력해주세요.'}
 
   _generate = () => {
     axios.get(`http:/${properties.API_IP}:${properties.API_PORT}/translate?target=${this.state.target}`)
@@ -16,8 +16,10 @@ export default class App extends Component {
         let code = ''
         const {type} = this.state
         
-        if (type === 'underbar') {
+        if (type === 'UNDERBAR') {
           code = strings.join('_').toUpperCase();
+        } else if (type === 'underbar') {
+          code = strings.join('_').toLowerCase();
         } else if (type === 'hyphen') {
           code = strings.join('-').toLowerCase();
         } else if (type === 'camelCase') {
@@ -57,9 +59,16 @@ export default class App extends Component {
             className='radio-type' 
             type='radio' 
             name='type' 
-            value='underbar'
+            value='UNDERBAR'
             onClick={this._setType}
             defaultChecked
+          />UNDERBAR&nbsp;&nbsp;
+          <input
+            className='radio-type'
+            type='radio'
+            name='type'
+            value='underbar'
+            onClick={this._setType}
           />underbar&nbsp;&nbsp;
           <input 
             className='radio-type' 
