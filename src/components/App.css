@@ -14,7 +14,8 @@
   border: 1px solid #bdbdbd;
   border-radius: 5px;
   height: 25px;
-  width: 250px;
+  width: 500px;
+  text-align: center;
 }
 
 .div-type {
@@ -23,6 +24,10 @@
 }
 
 .radio-type:hover {
+  cursor: pointer;
+}
+
+.label-type:hover {
   cursor: pointer;
 }
 

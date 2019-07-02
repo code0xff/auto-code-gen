@@ -4,7 +4,7 @@ import './App.css'
 import properties from '../constants/properties.json'
 
 export default class App extends Component {
-  state = {type: 'UNDERBAR', target: null, code: '코드로 변환하실 내용을 입력해주세요.'}
+  state = {type: 'SNAKE_CASE', target: null, code: '코드로 변환하실 내용을 입력해주세요'}
 
   _generate = () => {
     axios.get(`http:/${properties.API_IP}:${properties.API_PORT}/translate?target=${this.state.target}`)
@@ -16,13 +16,17 @@ export default class App extends Component {
         let code = ''
         const {type} = this.state
         
-        if (type === 'UNDERBAR') {
-          code = strings.join('_').toUpperCase();
-        } else if (type === 'underbar') {
-          code = strings.join('_').toLowerCase();
-        } else if (type === 'hyphen') {
-          code = strings.join('-').toLowerCase();
-        } else if (type === 'camelCase') {
+        if (type === 'SNAKE_CASE') {
+          code = strings.join('_').toUpperCase()
+        } else if (type === 'snake_case') {
+          code = strings.join('_').toLowerCase()
+        } else if (type === 'snake-case') {
+          code = strings.join('-').toLowerCase()
+        } else if (type === 'UpperCamelCase') {
+          for (let i = 0; i < strings.length; i++) {
+            code += (strings[i].charAt(0).toUpperCase() + strings[i].slice(1))
+          }
+        } else if (type === 'lowerCamelCase') {
           code += strings[0]
           for (let i = 1; i < strings.length; i++) {
             code += (strings[i].charAt(0).toUpperCase() + strings[i].slice(1))
@@ -49,41 +53,58 @@ export default class App extends Component {
     return (
       <div className='app'>
         <div>
-          <h3 className='h-title'>Auto Code Generator</h3>
+          <h2 className='h-title'>Auto Code Generator</h2>
         </div>
         <div>
-          <input className='input-target' type='text' onChange={this._setTarget} />
+          <input className='input-target' type='text' autoFocus onChange={this._setTarget} />
         </div>
         <div className='div-type'>
-          <input 
-            className='radio-type' 
-            type='radio' 
-            name='type' 
-            value='UNDERBAR'
-            onClick={this._setType}
-            defaultChecked
-          />UNDERBAR&nbsp;&nbsp;
-          <input
-            className='radio-type'
-            type='radio'
-            name='type'
-            value='underbar'
-            onClick={this._setType}
-          />underbar&nbsp;&nbsp;
-          <input 
-            className='radio-type' 
-            type='radio' 
-            name='type' 
-            value='camelCase'
-            onClick={this._setType}
-          />camelCase&nbsp;&nbsp;
-          <input 
-            className='radio-type' 
-            type='radio' 
-            name='type' 
-            value='hyphen' 
-            onClick={this._setType}
-          />hyphen
+          <label className='label-type'>
+            <input 
+              className='radio-type'
+              type='radio' 
+              name='type' 
+              value='SNAKE_CASE'
+              onClick={this._setType}
+              defaultChecked
+            />SNAKE_CASE
+          </label>&nbsp;
+          <label className='label-type'>
+            <input
+              className='radio-type'
+              type='radio'
+              name='type'
+              value='snake_case'
+              onClick={this._setType}
+            />snake_case
+          </label>&nbsp;
+          <label className='label-type'>
+            <input 
+              className='radio-type'
+              type='radio' 
+              name='type' 
+              value='snake-case'
+              onClick={this._setType}
+            />snake-case
+          </label>&nbsp;
+          <label className='label-type'>
+            <input
+              className='radio-type'
+              type='radio' 
+              name='type' 
+              value='UpperCamelCase'
+              onClick={this._setType}
+            />UpperCamelCase
+          </label>&nbsp;
+          <label className='label-type'>
+            <input 
+              className='radio-type'
+              type='radio' 
+              name='type' 
+              value='lowerCamelCase'
+              onClick={this._setType}
+            />lowerCamelCase
+          </label>&nbsp;
         </div>
         <div>
           <button className='button-generate' onClick={this._generate}>generate</button>
