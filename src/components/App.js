@@ -22,11 +22,11 @@ export default class App extends Component {
           code = strings.join('_').toLowerCase()
         } else if (type === 'snake-case') {
           code = strings.join('-').toLowerCase()
-        } else if (type === 'UpperCamelCase') {
+        } else if (type === 'CamelCase') {
           for (let i = 0; i < strings.length; i++) {
             code += (strings[i].charAt(0).toUpperCase() + strings[i].slice(1))
           }
-        } else if (type === 'lowerCamelCase') {
+        } else if (type === 'camelCase') {
           code += strings[0]
           for (let i = 1; i < strings.length; i++) {
             code += (strings[i].charAt(0).toUpperCase() + strings[i].slice(1))
@@ -53,58 +53,73 @@ export default class App extends Component {
     return (
       <div className='app'>
         <div>
-          <h2 className='h-title'>Auto Code Generator</h2>
+          <h2 className='h-title'>Automatic Code Generator</h2>
         </div>
         <div>
           <input className='input-target' type='text' autoFocus onChange={this._setTarget} />
         </div>
-        <div className='div-type'>
-          <label className='label-type'>
-            <input 
-              className='radio-type'
-              type='radio' 
-              name='type' 
-              value='SNAKE_CASE'
-              onClick={this._setType}
-              defaultChecked
-            />SNAKE_CASE
-          </label>&nbsp;
-          <label className='label-type'>
-            <input
-              className='radio-type'
-              type='radio'
-              name='type'
-              value='snake_case'
-              onClick={this._setType}
-            />snake_case
-          </label>&nbsp;
-          <label className='label-type'>
-            <input 
-              className='radio-type'
-              type='radio' 
-              name='type' 
-              value='snake-case'
-              onClick={this._setType}
-            />snake-case
-          </label>&nbsp;
-          <label className='label-type'>
-            <input
-              className='radio-type'
-              type='radio' 
-              name='type' 
-              value='UpperCamelCase'
-              onClick={this._setType}
-            />UpperCamelCase
-          </label>&nbsp;
-          <label className='label-type'>
-            <input 
-              className='radio-type'
-              type='radio' 
-              name='type' 
-              value='lowerCamelCase'
-              onClick={this._setType}
-            />lowerCamelCase
-          </label>&nbsp;
+        <div className='div-types'>
+          <div className='div-type'>
+            <label className='label-type'>
+            SNAKE_CASE<br/>
+              <input 
+                className='radio-type'
+                type='radio' 
+                name='type' 
+                value='SNAKE_CASE'
+                onClick={this._setType}
+                defaultChecked
+              />
+            </label>
+          </div>
+          <div className='div-type'>
+            <label className='label-type'>
+            snake_case<br/>
+              <input
+                className='radio-type'
+                type='radio'
+                name='type'
+                value='snake_case'
+                onClick={this._setType}
+              />
+            </label>
+          </div>
+          <div className='div-type'>
+            <label className='label-type'>
+            snake-case<br/>
+              <input 
+                className='radio-type'
+                type='radio' 
+                name='type' 
+                value='snake-case'
+                onClick={this._setType}
+              />
+            </label>
+          </div>
+          <div className='div-type'>
+            <label className='label-type'>
+            CamelCase<br/>
+              <input
+                className='radio-type'
+                type='radio' 
+                name='type' 
+                value='CamelCase'
+                onClick={this._setType}
+              />
+            </label>
+          </div>
+          <div className='div-type'>
+            <label className='label-type'>
+            camelCase<br/>
+              <input 
+                className='radio-type'
+                type='radio' 
+                name='type' 
+                value='camelCase'
+                onClick={this._setType}
+              />
+            </label>
+          </div>
         </div>
         <div>
           <button className='button-generate' onClick={this._generate}>generate</button>

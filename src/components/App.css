@@ -18,13 +18,22 @@
   text-align: center;
 }
 
-.div-type {
+.div-types {
   margin: 15px;
   color: #6e6e6e;
+  display: flex;
+  flex-direction: row;
 }
 
 .radio-type:hover {
   cursor: pointer;
+}
+
+.div-type {
+  height: 40px;
+  width: 100px;
+  text-align: center;
+  vertical-align: bottom;
 }
 
 .label-type:hover {
