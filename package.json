@@ -4,7 +4,7 @@
   "description": "Automatic Code Generator",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "webpack --mode development&&electron .",
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
     "pack": "electron-builder --dir",
